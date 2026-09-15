@@ -30,3 +30,11 @@ export TEST_MONGODB_S3_SECONDARY2_PORT=17023
 export MINIO_ENDPOINT=http://localhost:9000/
 export MINIO_ACCESS_KEY_ID=example00000
 export MINIO_SECRET_ACCESS_KEY=secret00000
+
+# PostgreSQL test instances provided by sandbox-pg/test-env. The ports are
+# allocated by pg_sandbox at deploy time, so they are read from the file
+# test-env writes rather than hard-coded here.
+PT_PG_SANDBOX_ENV_FILE=${PT_PG_SANDBOX_ENV:-${TMP_DIR:-/tmp}/pt-pg-sandbox/env}
+if [ -f "$PT_PG_SANDBOX_ENV_FILE" ]; then
+    . "$PT_PG_SANDBOX_ENV_FILE"
+fi
